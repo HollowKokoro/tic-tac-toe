@@ -5,7 +5,7 @@ class Main {
         char[] field;
         field = new char [9];
 
-        for(int i = 0; i < 9; i++) {
+        for (int i = 0; i < 9; i++) {
             int positionInt = stream.input();
             checker.select(field[positionInt]);
             checker.fill(field, i, positionInt);

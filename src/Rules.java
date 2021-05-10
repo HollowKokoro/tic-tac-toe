@@ -15,35 +15,41 @@ public class Rules {
         }
     }
     public boolean win(char[] field, char sign, int i) {
-        boolean flag = false;
-        if(field[0] == sign & field[3] == sign & field[6] == sign) {
-            System.out.println(sign + " won");
-            flag = true;
-        } else if(field[0] == sign & field[1] == sign & field[2] == sign) {
-            System.out.println(sign + " won");
-            flag = true;
-        } else if(field[3] == sign & field[4] == sign & field[5] == sign) {
-            System.out.println(sign + " won");
-            flag = true;
-        } else if(field[6] == sign & field[7] == sign & field[8] == sign) {
-            System.out.println(sign + " won");
-            flag = true;
-        } else if(field[1] == sign & field[4] == sign & field[7] == sign) {
-            System.out.println(sign + " won");
-            flag = true;
-        } else if(field[2] == sign & field[5] == sign & field[8] == sign) {
-            System.out.println(sign + " won");
-            flag = true;
-        } else if(field[0] == sign & field[4] == sign & field[8] == sign) {
-            System.out.println(sign + " won");
-            flag = true;
-        } else if(field[2] == sign & field[4] == sign & field[6] == sign) {
-            System.out.println(sign + " won");
-            flag = true;
-        } else if(i == 8) {
-            System.out.println(sign + " won");
-            flag = true;
+        if (win_condition(field[0], field[1], field[2], sign)) {
+            return true;
         }
-        return flag;
+        if (win_condition(field[3], field[4], field[5], sign)) {
+            return true;
+        }
+        if (win_condition(field[6], field[7], field[8], sign)) {
+            return true;
+        }
+        if (win_condition(field[0], field[3], field[6], sign)) {
+            return true;
+        }
+        if (win_condition(field[1], field[4], field[7], sign)) {
+            return true;
+        }
+        if (win_condition(field[2], field[5], field[8], sign)) {
+            return true;
+        }
+        if (win_condition(field[0], field[4], field[8], sign)) {
+            return true;
+        }
+        if (win_condition(field[2], field[4], field[6], sign)) {
+            return true;
+        }
+        if (i == 8) {
+            System.out.println("O won");
+            return true;
+        }
+        return false;
+    }
+    private boolean win_condition(char fieldOne, char fieldTwo, char fieldThree, char sign) {
+        if (fieldOne == sign & fieldTwo == sign & fieldThree == sign) {
+            System.out.println(sign + " won");
+            return true;
+        }
+        return false;
     }
 }
